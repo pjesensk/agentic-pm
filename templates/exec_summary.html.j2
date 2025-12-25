@@ -1,0 +1,183 @@
+<div id="main-content" class="wiki-content">
+  <h1>{{ item.name }}</h1>
+  <p>{{ item.description }}</p>
+  <h3>
+    Status:&nbsp;<span class="status-macro aui-lozenge aui-lozenge-moved conf-macro output-inline" data-hasbody="false" data-macro-name="status">{{ item.status }}</span>
+  </h3>
+  <p>{{ item.statusdesc }}</p>
+  <h3>Estimated end date:&nbsp;<time datetime="{{ item.duedate }}" class="date-upcoming">{{ item.duedate }}</time></h3>
+  <div class="table-wrap">
+    <table class="relative-table confluenceTable" style="width: 100%">
+      <tbody>
+        <tr>
+            <th scope="col" class="confluenceTh" style="box-sizing: border-box" colspan="2">
+              <h2>Prerequisities to success</h2>
+            </th>
+        </tr>
+        <tr>
+          <td class="confluenceTd" colspan="2">
+            {% if item.prerequisites %}
+                <table>
+                  <tr>
+                    <th>Item</th>
+                    <th>Accountable</th>
+                    <th>Due date</th>
+                    <th>Status</th>
+                  </tr>
+                  {% for row in item.prerequisites %}
+                      <tr>
+                          <td><strong>{{ row.name }}:</strong> {{row.desc}}</td>
+                          <td>{{ row.accountable }}</td>
+                          <td><time datetime="{{ row.duedate }}" class="date-upcoming">{{ row.duedate }}</time></td>
+                          <td>{{ row.status }}</td>
+                      </tr>
+                  {% endfor %}
+                </table>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <th scope="col" class="confluenceTh" style="box-sizing: border-box">
+            <h2>Achievements in last sprint</h2>
+          </th>
+          <th scope="col" class="confluenceTh" style="box-sizing: border-box">
+            <h2>Key deliverables &amp; success criteria</h2>
+          </th>
+        </tr>
+        <tr>
+          <td class="confluenceTd">
+            {% if item.achievements %}
+                <ul>
+                {% for row in item.achievements %}
+                    <li>
+                        {{ row }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+          </td>
+          <td class="confluenceTd">
+            {% if item.deliverables %}
+                <ul>
+                {% for row in item.deliverables %}
+                    <li>
+                        {{ row }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <th scope="col" class="confluenceTh">
+            <h2>Current focus</h2>
+          </th>
+          <th scope="col" class="confluenceTh">
+            <h2>Next steps</h2>
+          </th>
+        </tr>
+        <tr>
+          <td class="confluenceTd">
+            {% if item.focus %}
+                <ul>
+                {% for row in item.focus %}
+                    <li>
+                        {{ row }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+          </td>
+          <td class="confluenceTd">
+            {% if item.next_steps %}
+                <ul>
+                {% for row in item.next_steps %}
+                    <li>
+                        {{ row }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <th scope="col" class="confluenceTh">
+            <h2>
+              Risks &amp; Issues
+            </h2>
+          </th>
+          <th scope="col" class="confluenceTh">
+            <h2>
+              Links to work products &amp; tasks
+            </h2>
+          </th>
+        </tr>
+        <tr>
+          <td class="confluenceTd">
+            {% if item.risks %}
+                <ul>
+                {% for row in item.risks %}
+                    <li>
+                        {{ row }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+          </td>
+          <td class="confluenceTd">
+            {% if item.links %}
+                <ul>
+                {% for row in item.links %}
+                    <li>
+                        {{ row }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <th scope="col" class="confluenceTh" colspan="2">
+            <h2>
+              Timeline
+            </h2>
+          </th>
+        </tr>
+        <tr>
+          <td class="confluenceTd" colspan="2">
+            {% if item.timeline %}
+                <ul>
+                {% for row in item.timeline %}
+                    <li>
+                        <time datetime="{{ row.start_date }}" class="date-upcoming">{{ row.start_date }}</time>&nbsp;
+                        {{ row.description }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+          </td>
+        </tr>
+        {% if item.raci %}
+        <tr>
+          <th colspan="2" scope="colgroup" class="confluenceTh">
+            <h2>
+              RACI matrix
+            </h2>
+          </th>
+        </tr>
+        <tr>
+          <td colspan="2" class="confluenceTd">
+                <ul>
+                {% for row in item.raci %}
+                    <li>
+                        {{ row }}
+                    </li>
+                {% endfor %}
+                </ul>
+          </td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
