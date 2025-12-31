@@ -4,7 +4,7 @@
   <h3>
     Status:&nbsp;<span class="status-macro aui-lozenge aui-lozenge-moved conf-macro output-inline" data-hasbody="false" data-macro-name="status">{{ item.status }}</span>
   </h3>
-  <p>{{ item.statusdesc }}</p>
+  <p>{{ item.statusdesc|e }}</p>
   <h3>Estimated end date:&nbsp;<time datetime="{{ item.duedate }}" class="date-upcoming">{{ item.duedate }}</time></h3>
   <div class="table-wrap">
     <table class="relative-table confluenceTable" style="width: 100%">
@@ -26,10 +26,10 @@
                   </tr>
                   {% for row in item.prerequisites %}
                       <tr>
-                          <td><strong>{{ row.name }}:</strong> {{row.desc}}</td>
-                          <td>{{ row.accountable }}</td>
+                          <td><strong>{{ row.name|e }}:</strong> {{row.desc|e}}</td>
+                          <td>{{ row.accountable|e }}</td>
                           <td><time datetime="{{ row.duedate }}" class="date-upcoming">{{ row.duedate }}</time></td>
-                          <td>{{ row.status }}</td>
+                          <td>{{ row.status|e }}</td>
                       </tr>
                   {% endfor %}
                 </table>
@@ -50,7 +50,7 @@
                 <ul>
                 {% for row in item.achievements %}
                     <li>
-                        {{ row }}
+                        {{ row|e }}
                     </li>
                 {% endfor %}
                 </ul>
@@ -61,7 +61,7 @@
                 <ul>
                 {% for row in item.deliverables %}
                     <li>
-                        {{ row }}
+                        {{ row|e }}
                     </li>
                 {% endfor %}
                 </ul>
@@ -82,7 +82,7 @@
                 <ul>
                 {% for row in item.focus %}
                     <li>
-                        {{ row }}
+                        {{ row|e }}
                     </li>
                 {% endfor %}
                 </ul>
@@ -93,7 +93,7 @@
                 <ul>
                 {% for row in item.next_steps %}
                     <li>
-                        {{ row }}
+                        {{ row|e }}
                     </li>
                 {% endfor %}
                 </ul>
@@ -118,7 +118,7 @@
                 <ul>
                 {% for row in item.risks %}
                     <li>
-                        {{ row }}
+                        {{ row|e }}
                     </li>
                 {% endfor %}
                 </ul>
@@ -129,7 +129,7 @@
                 <ul>
                 {% for row in item.links %}
                     <li>
-                        {{ row }}
+                        {{ row}}
                     </li>
                 {% endfor %}
                 </ul>
@@ -150,7 +150,7 @@
                 {% for row in item.timeline %}
                     <li>
                         <time datetime="{{ row.start_date }}" class="date-upcoming">{{ row.start_date }}</time>&nbsp;
-                        {{ row.description }}
+                        {{ row.description|e }}
                     </li>
                 {% endfor %}
                 </ul>
@@ -170,7 +170,7 @@
                 <ul>
                 {% for row in item.raci %}
                     <li>
-                        {{ row }}
+                        {{ row|e }}
                     </li>
                 {% endfor %}
                 </ul>
