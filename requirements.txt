@@ -1,0 +1,7 @@
+requests
+hvac
+python-dotenv
+strands-agents[ollama]
+apache-airflow
+graphviz
+prefect
